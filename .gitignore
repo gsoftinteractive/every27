@@ -3,9 +3,10 @@
 .env.local
 .env.*.local
 
-# IDE
+# IDE & Tools
 .idea/
 .vscode/
+.claude/
 *.swp
 *.swo
 
