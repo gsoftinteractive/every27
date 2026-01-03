@@ -34,7 +34,7 @@ $page_description = 'Login to your Every27 account. Secure access for companies 
             <div class="login-card">
                 <!-- Header -->
                 <div class="login-header">
-                    <a href="index.php" class="logo">
+                    <a href="/" class="logo">
                         <span>Every</span><span class="highlight">27</span>
                     </a>
                     <p style="color: var(--gray-500); margin-bottom: 0;">Welcome back! Please login to your account.</p>
@@ -129,7 +129,7 @@ $page_description = 'Login to your Every27 account. Secure access for companies 
 
             <!-- Back to Home -->
             <div style="text-align: center; margin-top: var(--spacing-lg);">
-                <a href="index.php" style="color: var(--gray-500); font-size: 0.875rem; display: inline-flex; align-items: center; gap: var(--spacing-sm);">
+                <a href="/" style="color: var(--gray-500); font-size: 0.875rem; display: inline-flex; align-items: center; gap: var(--spacing-sm);">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="19" y1="12" x2="5" y2="12"></line>
                         <polyline points="12 19 5 12 12 5"></polyline>

@@ -18,7 +18,7 @@ include '../includes/header.php';
 <section class="page-header">
     <div class="container">
         <div class="breadcrumb">
-            <a href="index.php">Home</a>
+            <a href="/">Home</a>
             <span>/</span>
             <span class="current">Request Access</span>
         </div>
@@ -45,7 +45,7 @@ include '../includes/header.php';
                 <p style="color: #047857; margin-bottom: var(--spacing-xl);">
                     A confirmation email has been sent to your email address. Our team will contact you shortly.
                 </p>
-                <a href="index.php" class="btn btn-primary">Back to Home</a>
+                <a href="/" class="btn btn-primary">Back to Home</a>
             </div>
         </div>
     </div>

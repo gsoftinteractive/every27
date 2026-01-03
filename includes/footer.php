@@ -6,7 +6,7 @@
             <div class="footer-grid">
                 <!-- Brand Column -->
                 <div class="footer-brand">
-                    <a href="index.php" class="logo">
+                    <a href="/" class="logo">
                         <img src="assets/images/every27.svg" alt="Every27 Logo">
                     </a>
                     <p>Your salary, on time, every time. We're solving late and erratic salary payments across Africa with our automated payroll platform.</p>

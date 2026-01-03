@@ -14,7 +14,7 @@ include '../includes/header.php';
 <section class="page-header">
     <div class="container">
         <div class="breadcrumb">
-            <a href="index.php">Home</a>
+            <a href="/">Home</a>
             <span>/</span>
             <span class="current">FAQs</span>
         </div>

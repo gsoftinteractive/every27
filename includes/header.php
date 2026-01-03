@@ -54,14 +54,14 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
     <header class="header" id="header">
         <div class="header-inner">
             <!-- Logo -->
-            <a href="index.php" class="logo">
+            <a href="/" class="logo">
                 <img src="assets/images/every27.svg" alt="Every27 Logo">
             </a>
 
             <!-- Desktop Navigation -->
             <nav class="nav-desktop">
                 <ul class="nav-links">
-                    <li><a href="index.php" class="nav-link <?php echo $current_page == 'index' ? 'active' : ''; ?>">Home</a></li>
+                    <li><a href="/" class="nav-link <?php echo $current_page == 'index' ? 'active' : ''; ?>">Home</a></li>
                     <li><a href="about.php" class="nav-link <?php echo $current_page == 'about' ? 'active' : ''; ?>">About</a></li>
                     <li><a href="features.php" class="nav-link <?php echo $current_page == 'features' ? 'active' : ''; ?>">Features</a></li>
                     <li><a href="pricing.php" class="nav-link <?php echo $current_page == 'pricing' ? 'active' : ''; ?>">Pricing</a></li>
@@ -85,7 +85,7 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
         <!-- Mobile Navigation -->
         <nav class="nav-mobile">
             <ul class="nav-links">
-                <li><a href="index.php" class="nav-link <?php echo $current_page == 'index' ? 'active' : ''; ?>">Home</a></li>
+                <li><a href="/" class="nav-link <?php echo $current_page == 'index' ? 'active' : ''; ?>">Home</a></li>
                 <li><a href="about.php" class="nav-link <?php echo $current_page == 'about' ? 'active' : ''; ?>">About</a></li>
                 <li><a href="features.php" class="nav-link <?php echo $current_page == 'features' ? 'active' : ''; ?>">Features</a></li>
                 <li><a href="pricing.php" class="nav-link <?php echo $current_page == 'pricing' ? 'active' : ''; ?>">Pricing</a></li>
