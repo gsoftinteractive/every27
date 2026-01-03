@@ -104,6 +104,40 @@ include '../includes/header.php';
             </div>
         </div>
 
+        <!-- Documentation Section -->
+        <div class="mb-5">
+            <h2 style="margin-bottom: var(--spacing-xl);">Documentation</h2>
+            <div class="card reveal">
+                <div class="card-body">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-xl); flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 250px;">
+                            <h3 style="color: var(--primary-color); margin-bottom: var(--spacing-sm);">Every27 Platform Handbook</h3>
+                            <p style="color: var(--gray-600); margin-bottom: 0;">
+                                Complete guide to using Every27 - for companies and employees. Learn about features, pricing, salary advance, and more.
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                            <a href="../docs/Every27_Handbook.html" target="_blank" class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                View Online
+                            </a>
+                            <a href="../docs/Every27_Handbook.md" download class="btn btn-outline">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download (Text)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Contact Options -->
         <div class="card reveal" style="background: var(--secondary-color); border: none;">
             <div class="card-body" style="padding: var(--spacing-2xl);">

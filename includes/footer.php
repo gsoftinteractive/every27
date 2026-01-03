@@ -55,6 +55,7 @@
                     <ul>
                         <li><a href="faq.php">FAQs</a></li>
                         <li><a href="help.php">Help Center</a></li>
+                        <li><a href="../docs/Every27_Handbook.html" target="_blank">Platform Handbook</a></li>
                         <li><a href="request-access.php">Request Access</a></li>
                     </ul>
                 </div>
