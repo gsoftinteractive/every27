@@ -7,6 +7,10 @@
 $page_title = 'Request Access';
 $page_description = 'Request access to Every27 payroll platform. Submit your company details and documentation to get started.';
 
+// Check for success/error messages
+$success = isset($_GET['success']) && $_GET['success'] == '1';
+$error = isset($_GET['error']) && $_GET['error'] == '1';
+
 include '../includes/header.php';
 ?>
 
@@ -23,6 +27,51 @@ include '../includes/header.php';
     </div>
 </section>
 
+<?php if ($success): ?>
+<!-- Success Message -->
+<section class="section" style="padding-bottom: 0;">
+    <div class="container">
+        <div class="card" style="background: #D1FAE5; border: 1px solid #10B981; max-width: 800px; margin: 0 auto;">
+            <div class="card-body" style="text-align: center; padding: var(--spacing-2xl);">
+                <div style="width: 80px; height: 80px; background: #10B981; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--spacing-lg);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h2 style="color: #065F46; margin-bottom: var(--spacing-md);">Request Submitted Successfully!</h2>
+                <p style="color: #047857; margin-bottom: var(--spacing-lg); font-size: 1.125rem;">
+                    Thank you for your interest in Every27. We've received your access request and will review it within 1-3 business days.
+                </p>
+                <p style="color: #047857; margin-bottom: var(--spacing-xl);">
+                    A confirmation email has been sent to your email address. Our team will contact you shortly.
+                </p>
+                <a href="index.php" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</section>
+<?php else: ?>
+
+<?php if ($error): ?>
+<!-- Error Message -->
+<section class="section" style="padding-bottom: 0;">
+    <div class="container">
+        <div class="card" style="background: #FEE2E2; border: 1px solid #EF4444; max-width: 800px; margin: 0 auto;">
+            <div class="card-body" style="padding: var(--spacing-lg);">
+                <p style="color: #B91C1C; margin: 0; display: flex; align-items: center; gap: var(--spacing-sm);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <strong>Error:</strong> Please fill in all required fields correctly and try again.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
 <!-- Request Form Section -->
 <section class="section">
     <div class="container">
@@ -35,7 +84,7 @@ include '../includes/header.php';
                         Fill out the form below and our team will review your application within 1-3 business days.
                     </p>
 
-                    <form action="#" method="POST" data-validate>
+                    <form action="process-request.php" method="POST" data-validate>
                         <div class="form-group">
                             <label for="company_name" class="form-label">Company Name *</label>
                             <input type="text" id="company_name" name="company_name" class="form-input" placeholder="Enter your company name" required>
@@ -216,5 +265,7 @@ include '../includes/header.php';
         </div>
     </div>
 </section>
+
+<?php endif; // End of success check ?>
 
 <?php include '../includes/footer.php'; ?>
