@@ -117,14 +117,14 @@ include '../includes/header.php';
                             </p>
                         </div>
                         <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
-                            <a href="../docs/Every27_Handbook.html" target="_blank" class="btn btn-primary">
+                            <a href="docs/Every27_Handbook.html" target="_blank" class="btn btn-primary">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                     <circle cx="12" cy="12" r="3"></circle>
                                 </svg>
                                 View Online
                             </a>
-                            <a href="../docs/Every27_Handbook.md" download class="btn btn-outline">
+                            <a href="docs/Every27_Handbook.md" download class="btn btn-outline">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                     <polyline points="7 10 12 15 17 10"></polyline>
