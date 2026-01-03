@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Every27 - Complete Platform Handbook</title>
+    <style>
+        /* ===== EVERY27 BRAND COLORS ===== */
+        :root {
+            --primary-azure: #0E84F1;
+            --secondary-blue: #0E84F1;
+            --light-blue: #DFEBF7;
+            --dark-navy: #0A2540;
+            --white: #FFFFFF;
+            --text-dark: #1A1A1A;
+            --text-gray: #6B7280;
+            --border-gray: #E5E7EB;
+        }
+
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            body {
+                background: white;
+                font-size: 11pt;
+            }
+            
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .no-print {
+                display: none;
+            }
+            
+            a {
+                color: var(--primary-azure);
+                text-decoration: none;
+            }
+            
+            .hero {
+                page-break-after: always;
+            }
+        }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-azure) 0%, var(--dark-navy) 100%);
+            color: var(--white);
+            padding: 80px 40px;
+            text-align: center;
+            margin: -20px -20px 40px -20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+        }
+
+        .logo-text {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .logo-icon {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 8px;
+            margin-right: 10px;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .logo-icon::before {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--primary-azure);
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .hero .version {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .tagline {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        /* ===== TABLE OF CONTENTS ===== */
+        .toc {
+            background: var(--light-blue);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 50px;
+        }
+
+        .toc h2 {
+            color: var(--dark-navy);
+            font-size: 28px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-azure);
+        }
+
+        .toc ol {
+            list-style: none;
+            counter-reset: toc-counter;
+        }
+
+        .toc li {
+            counter-increment: toc-counter;
+            margin-bottom: 12px;
+            padding-left: 35px;
+            position: relative;
+        }
+
+        .toc li::before {
+            content: counter(toc-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--primary-azure);
+            color: var(--white);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .toc a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: var(--primary-azure);
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            margin-bottom: 60px;
+        }
+
+        section h2 {
+            color: var(--dark-navy);
+            font-size: 32px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary-azure);
+        }
+
+        section h3 {
+            color: var(--primary-azure);
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        section h4 {
+            color: var(--dark-navy);
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        /* ===== CONTENT BOXES ===== */
+        .info-box {
+            background: var(--light-blue);
+            border-left: 4px solid var(--primary-azure);
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-box.warning {
+            background: #FEF3C7;
+            border-left-color: #F59E0B;
+        }
+
+        .info-box.success {
+            background: #D1FAE5;
+            border-left-color: #10B981;
+        }
+
+        .info-box strong {
+            color: var(--dark-navy);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* ===== PROCESS DIAGRAM ===== */
+        .process-diagram {
+            background: linear-gradient(135deg, var(--light-blue) 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 2px solid var(--primary-azure);
+        }
+
+        .process-step {
+            background: var(--white);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-azure);
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .process-step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-azure);
+            color: var(--white);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== TABLES ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: var(--white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: var(--primary-azure);
+            color: var(--white);
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-gray);
+        }
+
+        tbody tr:hover {
+            background: var(--light-blue);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ===== LISTS ===== */
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        /* ===== CODE BLOCKS ===== */
+        pre {
+            background: var(--dark-navy);
+            color: #A5F3FC;
+            padding: 25px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 25px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+        }
+
+        /* ===== CARDS ===== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: var(--white);
+            border: 2px solid var(--border-gray);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary-azure);
+            box-shadow: 0 8px 20px rgba(14, 132, 241, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .card h4 {
+            color: var(--primary-azure);
+            margin-top: 0;
+        }
+
+        /* ===== HIGHLIGHTS ===== */
+        .highlight {
+            background: linear-gradient(120deg, var(--primary-azure) 0%, transparent 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 85%;
+            padding: 2px 0;
+        }
+
+        /* ===== BADGES ===== */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 0 5px;
+        }
+
+        .badge.primary {
+            background: var(--primary-azure);
+            color: var(--white);
+        }
+
+        .badge.success {
+            background: #10B981;
+            color: var(--white);
+        }
+
+        .badge.warning {
+            background: #F59E0B;
+            color: var(--white);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark-navy);
+            color: var(--white);
+            padding: 40px;
+            margin: 60px -20px -20px -20px;
+            text-align: center;
+        }
+
+        .footer h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin: 10px 0;
+        }
+
+        .footer a {
+            color: var(--primary-azure);
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .logo-text {
+                font-size: 36px;
+            }
+
+            section h2 {
+                font-size: 26px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 14px;
+            }
+        }
+
+        /* ===== SEPARATOR ===== */
+        .separator {
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-azure) 0%, transparent 100%);
+            margin: 40px 0;
+            border: none;
+        }
+
+        /* ===== STAT BOXES ===== */
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+            background: var(--light-blue);
+            border-radius: 8px;
+            margin: 10px;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-azure);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="logo">
+                <img src="../public/assets/images/every27.svg" alt="Every27 Logo" style="max-width: 150px; height: auto; border-radius: 12px; margin-bottom: 15px;">
+                <div class="logo-text">
+                    every27
+                </div>
+            </div>
+            <h1>Complete Platform Handbook</h1>
+            <p class="subtitle">Your Salary, On Time, Every Time</p>
+            <p class="version">Version 1.0 | January 2026</p>
+            <div class="tagline">
+                Eliminating late and erratic salary payments across Africa
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- TABLE OF CONTENTS -->
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <ol>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#problem">The Problem We Solve</a></li>
+                <li><a href="#how-it-works">How Every27 Works</a></li>
+                <li><a href="#getting-started">Getting Started</a></li>
+                <li><a href="#for-companies">For Companies</a></li>
+                <li><a href="#for-employees">For Employees</a></li>
+                <li><a href="#pricing">Pricing & Fees</a></li>
+                <li><a href="#salary-advance">Salary Advance</a></li>
+                <li><a href="#the-27th">The 27th - Payday</a></li>
+                <li><a href="#security">Security & Trust</a></li>
+                <li><a href="#faq">Frequently Asked Questions</a></li>
+                <li><a href="#contact">Contact & Support</a></li>
+            </ol>
+        </div>
+
+        <!-- SECTION 1: INTRODUCTION -->
+        <section id="introduction" class="page-break">
+            <h2>1. Introduction</h2>
+            
+            <h3>What is Every27?</h3>
+            <p>Every27 is a modern payroll management platform designed specifically for African businesses. We ensure that employees receive their salaries on time, every time - specifically on the <span class="highlight">27th of every month</span>.</p>
+
+            <h3>Our Mission</h3>
+            <p>To eliminate late and erratic salary payments across Africa by providing a reliable, automated payroll solution that benefits both employers and employees.</p>
+
+            <div class="info-box success">
+                <strong>Our Promise</strong>
+                <p>"Your salary, on the 27th, every month - guaranteed."</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4>For Companies</h4>
+                    <p>Automated payroll processing, reduced administrative burden, and improved employee satisfaction.</p>
+                </div>
+                <div class="card">
+                    <h4>For Employees</h4>
+                    <p>Predictable payments, salary advance options, and complete financial transparency.</p>
+                </div>
+                <div class="card">
+                    <h4>For Africa</h4>
+                    <p>Building trust, improving productivity, and creating financial stability across the continent.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="separator">
+
+        <!-- SECTION 2: THE PROBLEM -->
+        <section id="problem" class="page-break">
+            <h2>2. The Problem We Solve</h2>
+
+            <h3>The Reality of Salary Payments in Africa</h3>
+            <p>Millions of workers across Africa face a common challenge: <strong>unpredictable salary payments</strong>. This creates:</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4>💸 Financial Stress</h4>
+                    <p>Employees cannot plan their finances effectively</p>
+                </div>
+                <div class="card">
+                    <h4>📉 Reduced Productivity</h4>
+                    <p>Workers distracted by financial uncertainty</p>
+                </div>
+                <div class="card">
+                    <h4>🤝 Trust Issues</h4>
+                    <p>Damaged employer-employee relationships</p>
+                </div>
+                <div class="card">
+                    <h4>🌍 Economic Impact</h4>
+                    <p>Delayed payments ripple through families and communities</p>
+                </div>
+            </div>
+
+            <h3>Common Causes of Late Payments</h3>
+            <ul>
+                <li>Cash flow challenges for businesses</li>
+                <li>Manual payroll processing errors</li>
+                <li>Banking delays and inefficiencies</li>
+                <li>Lack of automated systems</li>
+                <li>Poor financial planning by employers</li>
+            </ul>
+
+            <h3>The Every27 Solution</h3>
+            <div class="process-diagram">
+                <div class="process-step" data-step="1">
+                    <strong>Automates payroll processing</strong> - No manual intervention needed
+                </div>
+                <div class="process-step" data-step="2">
+                    <strong>Ensures timely payments</strong> - Every 27th, without fail
+                </div>
+                <div class="process-step" data-step="3">
+                    <strong>Provides financial flexibility</strong> - Salary advances for employees
+                </div>
+                <div class="process-step" data-step="4">
+                    <strong>Builds accountability</strong> - Transparent tracking for all parties
+                </div>
+            </div>
+        </section>
+
+        <hr class="separator">
+
+        <!-- SECTION 3: HOW IT WORKS -->
+        <section id="how-it-works" class="page-break">
+            <h2>3. How Every27 Works</h2>
+
+            <h3>The Every27 Ecosystem</h3>
+            
+            <div class="info-box">
+                <strong>Simple 4-Step Process</strong>
+            </div>
+
+            <div class="process-diagram">
+                <div class="process-step" data-step="1">
+                    <h4>Company Onboarding</h4>
+                    <p>Request an invite, submit documentation, get approved, and complete your profile setup.</p>
+                </div>
+                <div class="process-step" data-step="2">
+                    <h4>Add Your Employees</h4>
+                    <p>Create employee accounts with their details, set salaries, and they receive login credentials via email.</p>
+                </div>
+                <div class="process-step" data-step="3">
+                    <h4>Fund Your Wallet</h4>
+                    <p>Add funds to your company wallet via XpressPayments or bank transfer. Funds are held securely until payday.</p>
+                </div>
+                <div class="process-step" data-step="4">
+                    <h4>Automatic Payday</h4>
+                    <p>On the 27th, we automatically process payroll. Employees get paid and can withdraw to their bank accounts!</p>
+                </div>
+            </div>
+
+            <h3>How Money Flows</h3>
+            <pre>
+┌─────────────────────────────────────────────────────────┐
+│                   EVERY27 PLATFORM                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│   ┌──────────────┐                   ┌──────────────┐  │
+│   │   COMPANY    │                   │   EMPLOYEE   │  │
+│   │   WALLET     │ ──On the 27th──▶  │    WALLET    │  │
+│   │              │   Auto-Transfer   │              │  │
+│   └──────────────┘                   └──────────────┘  │
+│         ▲                                    │          │
+│         │                                    ▼          │
+│   Fund Wallet                          Withdraw to      │
+│   (XpressPayments                      Bank Account     │
+│    or Bank Transfer)                   (XpressPayments) │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+            </pre>
+        </section>
+
+        <hr class="separator">
+
+        <!-- SECTION 4: GETTING STARTED -->
+        <section id="getting-started" class="page-break">
+            <h2>4. Getting Started</h2>
+
+            <h3>For Companies</h3>
+            
+            <h4>Eligibility Requirements</h4>
+            <p>To join Every27, your company must:</p>
+            <ul>
+                <li>Be a registered business in Nigeria</li>
+                <li>Have valid CAC Certificate or Business Registration</li>
+                <li>Have at least one employee to add to the platform</li>
+                <li>Commit to funding your wallet for payroll</li>
+            </ul>
+
+            <h4>Registration Process</h4>
+            <div class="process-diagram">
+                <div class="process-step" data-step="1">
+                    <strong>Request Invite</strong><br>
+                    Visit <a href="https://www.every27.com">www.every27.com</a>, click "Request Access", fill out the form, and submit.
+                </div>
+                <div class="process-step" data-step="2">
+                    <strong>Document Submission</strong><br>
+                    Upload your CAC Certificate, provide company contact information and authorized representative details.
+                </div>
+                <div class="process-step" data-step="3">
+                    <strong>Review & Approval</strong><br>
+                    Our team reviews your application (1-3 business days) and sends email notification.
+                </div>
+                <div class="process-step" data-step="4">
+                    <strong>Account Setup</strong><br>
+                    Log in, complete your profile, set up your wallet, and start adding employees.
+                </div>
+            </div>
+
+            <h3>For Employees</h3>
+            <div class="info-box">
+                <strong>Note:</strong> Employees don't register directly. Here's what to expect:
+            </div>
+            <ol>
+                <li>Your company adds you to the Every27 platform</li>
+                <li>You receive an email with your login credentials</li>
+                <li>Log in to your personal dashboard</li>
+                <li>Update your password for security</li>
+                <li>Add your bank details for withdrawals</li>
+                <li>Start using the platform!</li>
+            </ol>
+        </section>
+
+        <hr class="separator">
+
+        <!-- SECTION 5: FOR COMPANIES -->
+        <section id="for-companies" class="page-break">
+            <h2>5. For Companies</h2>
+
+            <h3>Company Dashboard Overview</h3>
+            <p>Your dashboard provides:</p>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>💰 Wallet Balance</h4>
+                    <p>Current funds available</p>
+                </div>
+                <div class="card">
+                    <h4>👥 Employee Count</h4>
+                    <p>Total active employees</p>
+                </div>
+                <div class="card">
+                    <h4>📊 Payroll Summary</h4>
+                    <p>Upcoming payment obligations</p>
+                </div>
+                <div class="card">
+                    <h4>📜 Transaction History</h4>
+                    <p>All wallet activities</p>
+                </div>
+            </div>
+
+            <h3>Managing Employees</h3>
+            
+            <h4>Adding a New Employee</h4>
+            <ol>
+                <li>Navigate to "Employees" section</li>
+                <li>Click "Add New Employee"</li>
+                <li>Enter employee details (name, email, phone, salary)</li>
+                <li>Click "Create Account"</li>
+                <li>Employee receives login credentials via email</li>
+            </ol>
+
+            <h4>Employee Information Required</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Required</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Full Name</td>
+                        <td><span class="badge primary">Yes</span></td>
+                        <td>As it appears on bank account</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><span class="badge primary">Yes</span></td>
+                        <td>Used for login and notifications</td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number</td>
+                        <td><span class="badge primary">Yes</span></td>
+                        <td>For verification and alerts</td>
+                    </tr>
+                    <tr>
+                        <td>Monthly Salary</td>
+                        <td><span class="badge primary">Yes</span></td>
+                        <td>Gross monthly salary amount</td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <td><span class="badge warning">No</span></td>
+                        <td>For organization purposes</td>
+                    </tr>
+                    <tr>
+                        <td>Bank Details</td>
+                        <td><span class="badge warning">No</span></td>
+                        <td>Can be added by employee</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Adjustments: Bonuses, Deductions & Allowances</h3>
+            <p>You can add various adjustments to employee payroll:</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h4>➕ Bonuses</h4>
+                    <p>Add extra compensation for performance or special occasions</p>
+                </div>
+                <div class="card">
+                    <h4>➖ Deductions</h4>
+                    <p>Apply deductions for loans, advances, or other reasons</p>
+                </div>
+                <div class="card">
+                    <h4>💼 Allowances</h4>
+                    <p>Add transport, housing, or other allowances</p>
+                </div>
+            </div>
+
+            <div class="info-box warning">
+                <strong>Important:</strong> All adjustments are visible to employees in their dashboard with the reason provided.
+            </div>
+
+            <h3>Funding Your Wallet</h3>
+            
+            <h4>Option 1: XpressPayments (Instant)</h4>
+            <ol>
+                <li>Click "Fund Wallet"</li>
+                <li>Enter amount</li>
+                <li>Select "Pay with XpressPayments"</li>
+                <li>Complete payment</li>
+                <li>Wallet credited instantly ✓</li>
+            </ol>
+
+            <h4>Option 2: Bank Transfer (Manual)</h4>
+            <ol>
+                <li>Click "Fund Wallet"</li>
+                <li>Select "Bank Transfer"</li>
+                <li>Make transfer to our provided bank details</li>
+                <li>Upload payment receipt on the platform</li>
+                <li>Our team verifies and credits your wallet (within 24 hours)</li>
+            </ol>
+
+            <h3>Salary Advance Control</h3>
+            <p>Companies have full control over the salary advance feature:</p>
+            <ul>
+                <li><strong>Enable/Disable:</strong> Turn the feature on or off for your entire company</li>
+                <li><strong>Block Specific Employees:</strong> Restrict certain employees from accessing advances</li>
+                <li><strong>View Advance History:</strong> See all advances taken by your employees</li>
+            </ul>
+        </section>
+
+        <hr class="separator">
+
+        <!-- SECTION 6: FOR EMPLOYEES -->
+        <section id="for-employees" class="page-break">
+            <h2>6. For Employees</h2>
+
+            <h3>Employee Dashboard Overview</h3>
+            <p>Your personal dashboard shows:</p>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>💳 Wallet Balance</h4>
+                    <p>Money available for withdrawal</p>
+                </div>
+                <div class="card">
+                    <h4>💵 Salary Information</h4>
+                    <p>Your monthly salary and breakdown</p>
+                </div>
+                <div class="card">
+                    <h4>⚡ Advance Status</h4>
+                    <p>Current advance balance (if any)</p>
+                </div>
+                <div class="card">
+                    <h4>📅 Next Payday</h4>
+                    <p>Countdown to the 27th</p>
+                </div>
+            </div>
+
+            <h3>Understanding Your Wallet</h3>
+            <p>Your Every27 wallet is where your salary is deposited. Think of it as your personal account within the platform.</p>
+
+            <h4>Wallet Activities Include:</h4>
+            <ul>
+                <li>Salary credits (on the 27th)</li>
+                <li>Bonus credits</li>
+                <li>Allowance credits</li>
+                <li>Advance deductions</li>
+                <li>Withdrawals to your bank</li>
+            </ul>
+
+            <h3>Viewing Your Salary Breakdown</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Base Salary</td>
+                        <td>Your standard monthly salary</td>
+                    </tr>
+                    <tr>
+                        <td>Bonuses</td>
+                        <td>Additional payments from employer</td>
+                    </tr>
+                    <tr>
+                        <td>Allowances</td>
+                        <td>Transport, housing, etc.</td>
+                    </tr>
+                    <tr>
+                        <td>Deductions</td>
+                        <td>Any amounts deducted by employer</td>
+                    </tr>
+                    <tr>
+                        <td>Advance Repayment</td>
+                        <td>If you took a salary advance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Net Salary</strong></td>
+                        <td><strong>Final amount credited to wallet</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Withdrawing Your Funds</h3>
+            
+            <h4>How to Withdraw</h4>
+            <div class="process-diagram">
+                <div class="process-step" data-step="1">
+                    Go to "Withdraw" section
+                </div>
+                <div class="process-step" data-step="2">
+                    Enter withdrawal amount
+                </div>
+                <div class="process-step" data-step="3">
+                    Confirm your bank details
+                </div>
+                <div class="process-step" data-step="4">
+                    Click "Withdraw"
+                </div>
+                <div class="process-step" data-step="5">
+                    Funds sent to your bank account ✓
+                </div>
+            </div>
+
+            <h4>Withdrawal Information</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Processing Time</td>
+                        <td>Near-instant via XpressPayments</td>
+                    </tr>
+                    <tr>
+                        <td>Minimum Amount</td>
+                        <td>No minimum</td>
+                    </tr>
+                    <tr>
+                        <td>Maximum Amount</td>
+                        <td>Your available balance</td>
+                    </tr>
+                    <tr>
+                        <td>Fees</td>
+                        <td>Standard bank transfer fees apply</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box warning">
+                <strong>Important:</strong> Ensure your bank account name matches your name on Every27 to avoid withdrawal issues.
+            </div>
+        </section>
+
+        <hr class="separator">
+
+        <!-- SECTION 7: PRICING -->
+        <section id="pricing" class="page-break">
+            <h2>7. Pricing & Fees</h2>
+
+            <h3>Transparent Pricing</h3>
+            <p>Every27 believes in clear, straightforward pricing with <strong>no hidden fees</strong>.</p>
+
+            <h3>Fee Structure</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fee Type</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Access Fee</td>
+                        <td><strong>₦1,500/employee/month</strong></td>
+                        <td>Platform access for each employee</td>
+                    </tr>
+                    <tr>
+                        <td>Transaction Fee</td>
+                        <td><strong>7%</strong></td>
+                        <td>Applied only on salary advances</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>How Access Fees Work</h3>
+            <ul>
+                <li>Charged monthly per active employee</li>
+                <li>Deducted automatically from company wallet on the 27th</li>
+                <li>Deducted <strong>before</strong> salary processing</li>
+            </ul>
+
+            <h4>Example Calculation</h4>
+            <div class="info-box">
+                <pre style="background: transparent; color: var(--text-dark); padding: 0;">
+<strong>Company:</strong> ABC Limited
+<strong>Active Employees:</strong> 20
+<strong>Monthly Salaries Total:</strong> ₦2,000,000
+
+<strong>Access Fees:</strong> 20 × ₦1,500 = ₦30,000
+<strong>Total Required in Wallet:</strong> ₦2,030,000
+
+<strong>On the 27th:</strong>
+1. Access Fees Deducted: ₦30,000
+2. Salaries Paid: ₦2,000,000
+                </pre>
+            </div>
+
+            <h3>What's Included</h3>
+            <p>Your access fee covers:</p>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>✓ Unlimited wallet funding</h4>
+                </div>
+                <div class="card">
+                    <h4>✓ Automated payroll processing</h4>
+                </div>
+                <div class="card">
+                    <h4>✓ Employee self-service portal</h4>
+                </div>
+                <div class="card">
+                    <h4>✓ Email notifications</h4>
+                </div>
+                <div class="card">
+                    <h4>✓ Transaction history</h4>
+                </div>
+                <div class="card">
+                    <h4>✓ 2FA security</h4>
+                </div>
+                <div class="card">
+                    <h4>✓ Customer support</h4>
+                </div>
+                <div class="card">
+                    <h4>✓ Reports & analytics</h4>
+                </div>
+            </div>
+        </section>
+
+        <hr class="separator">
+
+        <!-- SECTION 8: SALARY ADVANCE -->
+        <section id="salary-advance" class="page-break">
+            <h2>8. Salary Advance</h2>
+
+            <h3>What is Salary Advance?</h3>
+            <p>Salary Advance allows employees to access a portion of their earned salary before the official payday. It's a financial tool designed to help employees manage unexpected expenses.</p>
+
+            <h3>How It Works</h3>
+            <div class="process-diagram">
+                <div class="process-step" data-step="1">
+                    <strong>Employee requests</strong> an advance through their dashboard
+                </div>
+                <div class="process-step" data-step="2">
+                    <strong>System validates</strong> eligibility and amount
+                </div>
+                <div class="process-step" data-step="3">
+                    <strong>Funds are credited</strong> to employee's wallet instantly
+                </div>
+                <div class="process-step" data-step="4">
+                    <strong>On the 27th</strong>, advance + fee is deducted from salary
+                </div>
+                <div class="process-step" data-step="5">
+                    <strong>Remaining salary</strong> is credited to wallet
+                </div>
+            </div>
+
+            <h3>Eligibility Criteria</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Requirement</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Employment Period</td>
+                        <td>Must be on platform for at least 1 month</td>
+                    </tr>
+                    <tr>
+                        <td>Company Approval</td>
+                        <td>Company must have feature enabled</td>
+                    </tr>
+                    <tr>
+                        <td>Individual Status</td>
+                        <td>Not blocked by employer</td>
+                    </tr>
+                    <tr>
+                        <td>Outstanding Balance</td>
+                        <td>Current owing must allow new advance within limit</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Advance Limits</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Maximum Advance</h4>
+                    <p class="stat-number">75%</p>
+                    <p>of monthly salary</p>
+                </div>
+                <div class="card">
+                    <h4>Multiple Advances</h4>
+                    <p class="stat-number">✓</p>
+                    <p>Allowed (within 75% total limit)</p>
+                </div>
+            </div>
+
+            <h4>Example</h4>
+            <div class="info-box">
+                <pre style="background: transparent; color: var(--text-dark); padding: 0;">
+<strong>Employee Salary:</strong> ₦100,000
+<strong>Maximum Advance:</strong> ₦75,000 (75%)
+
+<strong>Scenario 1:</strong>
+- Takes ₦30,000 advance
+- Can still take up to ₦45,000 more
+
+<strong>Scenario 2:</strong>
+- Takes ₦75,000 advance
+- Cannot take any more until repaid
+                </pre>
+            </div>
+
+            <h3>Transaction Fee</h3>
+            <p>A <strong class="highlight">7% transaction fee</strong> applies to all salary advances:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Advance Amount</th>
+                        <th>Fee (7%)</th>
+                        <th>Total Repayment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>₦10,000</td>
+                        <td>₦700</td>
+                        <td><strong>₦10,700</strong></td>
+                    </tr>
+                    <tr>
+                        <td>₦25,000</td>
+                        <td>₦1,750</td>
+                        <td><strong>₦26,750</strong></td>
+                    </tr>
+                    <tr>
+                        <td>₦50,000</td>
+                        <td>₦3,500</td>
+                        <td><strong>₦53,500</strong></td>
+                    </tr>
+                    <tr>
+                        <td>₦75,000</td>
+                        <td>₦5,250</td>
+                        <td><strong>₦80,250</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Repayment</h3>
+            <ul>
+                <li><strong>Automatic:</strong> Repayment is automatically deducted on the 27th</li>
+                <li><strong>Priority:</strong> Advance repayment is deducted before salary credit</li>
+                <li><strong>Full Deduction:</strong> The full amount (advance + fee) is deducted at once</li>
+            </ul>
+
+            <h4>Repayment Example</h4>
+            <div class="info-box">
+                <pre style="background: transparent; color: var(--text-dark); padding: 0;">
+<strong>Employee:</strong> John Doe
+<strong>Salary:</strong> ₦100,000
+<strong>Advance Taken:</strong> ₦50,000
+<strong>Transaction Fee:</strong> ₦3,500
+<strong>Total Owing:</strong> ₦53,500
+
+<strong>On the 27th:</strong>
+- Gross Salary: ₦100,000
+- Less Advance Repayment: ₦53,500
+- <strong>Net Credited to Wallet: ₦46,500</strong>
+                </pre>
+            </div>
+
+            <div class="info-box warning">
+                <strong>Important Notes:</strong>
+                <ul>
+                    <li><strong>No Partial Repayment:</strong> Full advance + fee is deducted on payday</li>
+                    <li><strong>Multiple Advances:</strong> Total owing cannot exceed 75% + fee</li>
+                    <li><strong>Company Control:</strong> Your employer can enable/disable this feature</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr class="separator">
+
+        <!-- SECTION 9: THE 27TH -->
+        <section id="the-27th" class="page-break">
+            <h2>9. The 27th - Payday</h2>
+
+            <h3>Why the 27th?</h3>
+            <p>We chose the 27th because:</p>
+            <ul>
+                <li>It's before month-end, giving employees time to plan</li>
+                <li>It avoids last-day-of-month banking congestion</li>
+                <li>It's consistent and predictable</li>
+                <li>It allows time for any issues to be resolved before month-end</li>
+            </ul>
+
+            <h3>What Happens on the 27th</h3>
+            <p>Every 27th of the month, our system automatically:</p>
+
+            <div class="process-diagram">
+                <div class="process-step" data-step="1">
+                    <strong>Check Company Wallet Balance</strong>
+                </div>
+                <div class="process-step" data-step="2">
+                    <strong>Deduct Access Fees</strong> (₦1,500 × employees)
+                </div>
+                <div class="process-step" data-step="3">
+                    <strong>Verify Remaining Balance</strong> Covers All Salaries
+                </div>
+                <div class="process-step" data-step="4">
+                    <strong>For Each Employee:</strong><br>
+                    a. Calculate gross salary + adjustments<br>
+                    b. Deduct any salary advance owing<br>
+                    c. Credit net amount to employee wallet
+                </div>
+                <div class="process-step" data-step="5">
+                    <strong>Send Notifications</strong> to All Parties
+                </div>
+            </div>
+
+            <h3>Processing Rules</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>What Happens</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wallet has sufficient funds</td>
+                        <td><span class="badge success">Full payroll processed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Wallet insufficient for salaries</td>
+                        <td><span class="badge warning">Access fees deducted, salaries skipped</span></td>
+                    </tr>
+                    <tr>
+                        <td>27th falls on weekend/holiday</td>
+                        <td><span class="badge primary">Processing still happens on the 27th</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Notifications</h3>
+            <p>On payday, all parties receive email notifications:</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Company Receives:</h4>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>Payroll summary</li>
+                        <li>Total amount disbursed</li>
+                        <li>New wallet balance</li>
+                        <li>Any issues encountered</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Employees Receive:</h4>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>Salary credit confirmation</li>
+                        <li>Breakdown (gross, deductions, net)</li>
+                        <li>New wallet balance</li>
+                        <li>Withdrawal instructions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>If Payroll Cannot Process</h3>
+            <div class="info-box warning">
+                <strong>If your company's wallet is insufficient:</strong>
+                <ol>
+                    <li>Access fees are still deducted</li>
+                    <li>Salaries are not paid</li>
+                    <li>Company receives alert notification</li>
+                    <li>Employees are notified of the delay</li>
+                </ol>
+                <p><strong>Company Action Required:</strong> Fund wallet immediately and contact Every27 support for manual processing.</p>
+            </div>
+        </section>
+
+        <hr class="separator">
+
+        <!-- SECTION 10: SECURITY -->
+        <section id="security" class="page-break">
+            <h2>10. Security & Trust</h2>
+
+            <h3>Our Security Measures</h3>
+            <p>Every27 takes security seriously. We implement:</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4>🔐 Two-Factor Authentication (2FA)</h4>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>Required for all logins</li>
+                        <li>6-digit code sent to email</li>
+                        <li>Codes expire after 10 minutes</li>
+                        <li>Protects against unauthorized access</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🔒 Data Encryption</h4>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>All data encrypted in transit (SSL/TLS)</li>
+                        <li>Sensitive data encrypted at rest</li>
+                        <li>Bank details stored securely</li>
+                        <li>Regular security audits</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🛡️ Account Protection</h4>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>Strong password requirements</li>
+                        <li>Session timeout for inactivity</li>
+                        <li>Login attempt monitoring</li>
+                        <li>Suspicious activity alerts</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Platform Trust Features</h3>
+            
+            <h4>For Companies</h4>
+            <ul>
+                <li>Complete visibility into payroll processing</li>
+                <li>Real-time wallet balance</li>
+                <li>Transaction history and audit trail</li>
+                <li>Employee management controls</li>
+            </ul>
+
+            <h4>For Employees</h4>
+            <ul>
+                <li>Transparent salary breakdown</li>
+                <li>Real-time wallet updates</li>
+                <li>Full transaction history</li>
+                <li>Secure withdrawal process</li>
+            </ul>
+
+            <h3>Our Commitments</h3>
+            <div class="process-diagram">
+                <div class="process-step" data-step="1">
+                    <strong>Privacy:</strong> We never share your data with third parties
+                </div>
+                <div class="process-step" data-step="2">
+                    <strong>Transparency:</strong> All fees and processes are clearly communicated
+                </div>
+                <div class="process-step" data-step="3">
+                    <strong>Reliability:</strong> 99.9% uptime commitment
+                </div>
+                <div class="process-step" data-step="4">
+                    <strong>Support:</strong> Dedicated customer support team
+                </div>
+            </div>
+        </section>
+
+        <hr class="separator">
+
+        <!-- SECTION 11: FAQ -->
+        <section id="faq" class="page-break">
+            <h2>11. Frequently Asked Questions</h2>
+
+            <h3>General Questions</h3>
+
+            <h4>Q: What is Every27?</h4>
+            <p><strong>A:</strong> Every27 is a payroll management platform that ensures employees receive their salaries on the 27th of every month, solving the problem of late and erratic payments.</p>
+
+            <h4>Q: Why is it called Every27?</h4>
+            <p><strong>A:</strong> Because we process and pay salaries every 27th of the month, without fail.</p>
+
+            <h4>Q: Is Every27 available outside Nigeria?</h4>
+            <p><strong>A:</strong> Currently, we operate only in Nigeria. We plan to expand to other African countries soon.</p>
+
+            <hr class="separator">
+
+            <h3>Company Questions</h3>
+
+            <h4>Q: How do I sign up my company?</h4>
+            <p><strong>A:</strong> Visit <a href="https://www.every27.com">www.every27.com</a>, click "Request Access," and submit your company details. Our team will review and approve your application.</p>
+
+            <h4>Q: What documents do I need?</h4>
+            <p><strong>A:</strong> You'll need your CAC Certificate or Business Registration document.</p>
+
+            <h4>Q: How long does approval take?</h4>
+            <p><strong>A:</strong> Typically 1-3 business days after submitting all required documents.</p>
+
+            <h4>Q: What if I don't have enough funds on the 27th?</h4>
+            <p><strong>A:</strong> Access fees will be deducted, but salaries won't be processed. You'll need to fund your wallet and contact support.</p>
+
+            <hr class="separator">
+
+            <h3>Employee Questions</h3>
+
+            <h4>Q: How do I create an account?</h4>
+            <p><strong>A:</strong> You don't create one directly. Your employer adds you to the platform, and you receive login credentials via email.</p>
+
+            <h4>Q: When do I get paid?</h4>
+            <p><strong>A:</strong> On the 27th of every month.</p>
+
+            <h4>Q: Can I take a salary advance?</h4>
+            <p><strong>A:</strong> Yes, if you've been on the platform for at least 1 month and your company has enabled the feature.</p>
+
+            <h4>Q: What's the maximum advance I can take?</h4>
+            <p><strong>A:</strong> Up to 75% of your monthly salary.</p>
+
+            <h4>Q: Is there a fee for salary advance?</h4>
+            <p><strong>A:</strong> Yes, a 7% transaction fee is added to your repayment amount.</p>
+
+            <hr class="separator">
+
+            <h3>Security Questions</h3>
+
+            <h4>Q: Is my money safe?</h4>
+            <p><strong>A:</strong> Yes. We use bank-grade security measures and your funds are held securely until disbursement.</p>
+
+            <h4>Q: What is 2FA?</h4>
+            <p><strong>A:</strong> Two-Factor Authentication. After entering your password, you'll receive a code via email to verify it's really you.</p>
+        </section>
+
+        <hr class="separator">
+
+        <!-- SECTION 12: CONTACT -->
+        <section id="contact">
+            <h2>12. Contact & Support</h2>
+
+            <h3>Get in Touch</h3>
+            <p>We're here to help you succeed with Every27.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4>📧 General Inquiries</h4>
+                    <p><strong>Email:</strong> hello@every27.com</p>
+                    <p><strong>Response Time:</strong> Within 24 hours</p>
+                </div>
+                <div class="card">
+                    <h4>🆘 Customer Support</h4>
+                    <p><strong>Email:</strong> support@every27.com</p>
+                    <p><strong>For:</strong> Account issues, help with platform features</p>
+                </div>
+                <div class="card">
+                    <h4>💼 Business Inquiries</h4>
+                    <p><strong>Email:</strong> business@every27.com</p>
+                    <p><strong>For:</strong> Partnerships, enterprise solutions</p>
+                </div>
+                <div class="card">
+                    <h4>⚙️ Technical Support</h4>
+                    <p><strong>Email:</strong> tech@every27.com</p>
+                    <p><strong>For:</strong> Integration support, API access, technical issues</p>
+                </div>
+                <div class="card">
+                    <h4>⚖️ Legal Matters</h4>
+                    <p><strong>Email:</strong> legal@every27.com</p>
+                    <p><strong>For:</strong> Contracts, compliance, legal inquiries</p>
+                </div>
+                <div class="card">
+                    <h4>🔒 Security Issues</h4>
+                    <p><strong>Email:</strong> security@every27.com</p>
+                    <p><strong>For:</strong> Report security vulnerabilities or fraud</p>
+                </div>
+            </div>
+
+            <h3>Office Address</h3>
+            <div class="info-box">
+                <p><strong>Every27 Limited</strong><br>
+                [Office Address]<br>
+                Lagos, Nigeria</p>
+            </div>
+
+            <h3>Operating Hours</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Monday - Friday</td>
+                        <td>8:00 AM - 6:00 PM (WAT)</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>9:00 AM - 2:00 PM (WAT)</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>Closed</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Social Media</h3>
+            <ul>
+                <li><strong>Twitter:</strong> @every27</li>
+                <li><strong>LinkedIn:</strong> Every27</li>
+                <li><strong>Instagram:</strong> @every27</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <h3>every27</h3>
+        <p class="tagline">Your Salary, On Time, Every Time.</p>
+        <p style="margin-top: 30px; font-size: 14px;">
+            This handbook is for informational purposes. Terms and conditions may be updated.<br>
+            Please refer to our website for the most current information.
+        </p>
+        <p style="margin-top: 20px;">
+            © 2026 Every27 Limited. All Rights Reserved.
+        </p>
+    </div>
+
+</body>
+</html>
