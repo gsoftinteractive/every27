@@ -412,14 +412,14 @@ include '../includes/header.php';
                 Join hundreds of companies already using Every27 for seamless payroll management.
             </p>
             <div class="cta-actions">
-                <a href="request-access.php" class="btn btn-white btn-lg">
+                <a href="request-access" class="btn btn-white btn-lg">
                     Request Access
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
-                <a href="pricing.php" class="btn btn-outline btn-lg" style="border-color: white; color: white;">View Pricing</a>
+                <a href="pricing" class="btn btn-outline btn-lg" style="border-color: white; color: white;">View Pricing</a>
             </div>
         </div>
     </div>

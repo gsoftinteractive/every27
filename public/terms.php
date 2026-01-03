@@ -176,7 +176,7 @@ include '../includes/header.php';
 
                     <h2>11. Privacy</h2>
                     <p>
-                        Your use of the platform is also governed by our <a href="privacy.php">Privacy Policy</a>. By using our services, you consent to the collection and use of information as described therein.
+                        Your use of the platform is also governed by our <a href="privacy">Privacy Policy</a>. By using our services, you consent to the collection and use of information as described therein.
                     </p>
 
                     <h2>12. Changes to Terms</h2>

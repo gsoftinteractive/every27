@@ -62,15 +62,15 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
             <nav class="nav-desktop">
                 <ul class="nav-links">
                     <li><a href="/" class="nav-link <?php echo $current_page == 'index' ? 'active' : ''; ?>">Home</a></li>
-                    <li><a href="about.php" class="nav-link <?php echo $current_page == 'about' ? 'active' : ''; ?>">About</a></li>
-                    <li><a href="features.php" class="nav-link <?php echo $current_page == 'features' ? 'active' : ''; ?>">Features</a></li>
-                    <li><a href="pricing.php" class="nav-link <?php echo $current_page == 'pricing' ? 'active' : ''; ?>">Pricing</a></li>
-                    <li><a href="faq.php" class="nav-link <?php echo $current_page == 'faq' ? 'active' : ''; ?>">FAQs</a></li>
-                    <li><a href="contact.php" class="nav-link <?php echo $current_page == 'contact' ? 'active' : ''; ?>">Contact</a></li>
+                    <li><a href="about" class="nav-link <?php echo $current_page == 'about' ? 'active' : ''; ?>">About</a></li>
+                    <li><a href="features" class="nav-link <?php echo $current_page == 'features' ? 'active' : ''; ?>">Features</a></li>
+                    <li><a href="pricing" class="nav-link <?php echo $current_page == 'pricing' ? 'active' : ''; ?>">Pricing</a></li>
+                    <li><a href="faq" class="nav-link <?php echo $current_page == 'faq' ? 'active' : ''; ?>">FAQs</a></li>
+                    <li><a href="contact" class="nav-link <?php echo $current_page == 'contact' ? 'active' : ''; ?>">Contact</a></li>
                 </ul>
                 <div class="nav-actions">
-                    <a href="login.php" class="btn btn-outline">Login</a>
-                    <a href="request-access.php" class="btn btn-primary">Request Access</a>
+                    <a href="login" class="btn btn-outline">Login</a>
+                    <a href="request-access" class="btn btn-primary">Request Access</a>
                 </div>
             </nav>
 
@@ -86,15 +86,15 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
         <nav class="nav-mobile">
             <ul class="nav-links">
                 <li><a href="/" class="nav-link <?php echo $current_page == 'index' ? 'active' : ''; ?>">Home</a></li>
-                <li><a href="about.php" class="nav-link <?php echo $current_page == 'about' ? 'active' : ''; ?>">About</a></li>
-                <li><a href="features.php" class="nav-link <?php echo $current_page == 'features' ? 'active' : ''; ?>">Features</a></li>
-                <li><a href="pricing.php" class="nav-link <?php echo $current_page == 'pricing' ? 'active' : ''; ?>">Pricing</a></li>
-                <li><a href="faq.php" class="nav-link <?php echo $current_page == 'faq' ? 'active' : ''; ?>">FAQs</a></li>
-                <li><a href="contact.php" class="nav-link <?php echo $current_page == 'contact' ? 'active' : ''; ?>">Contact</a></li>
+                <li><a href="about" class="nav-link <?php echo $current_page == 'about' ? 'active' : ''; ?>">About</a></li>
+                <li><a href="features" class="nav-link <?php echo $current_page == 'features' ? 'active' : ''; ?>">Features</a></li>
+                <li><a href="pricing" class="nav-link <?php echo $current_page == 'pricing' ? 'active' : ''; ?>">Pricing</a></li>
+                <li><a href="faq" class="nav-link <?php echo $current_page == 'faq' ? 'active' : ''; ?>">FAQs</a></li>
+                <li><a href="contact" class="nav-link <?php echo $current_page == 'contact' ? 'active' : ''; ?>">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="login.php" class="btn btn-outline">Login</a>
-                <a href="request-access.php" class="btn btn-primary">Request Access</a>
+                <a href="login" class="btn btn-outline">Login</a>
+                <a href="request-access" class="btn btn-primary">Request Access</a>
             </div>
         </nav>
     </header>

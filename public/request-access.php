@@ -160,7 +160,7 @@ include '../includes/header.php';
                             <label style="display: flex; align-items: flex-start; gap: var(--spacing-sm); cursor: pointer;">
                                 <input type="checkbox" name="agree_terms" required style="margin-top: 4px;">
                                 <span style="font-size: 0.875rem; color: var(--gray-600);">
-                                    I agree to the <a href="terms.php" target="_blank">Terms of Service</a> and <a href="privacy.php" target="_blank">Privacy Policy</a>. I understand that my application will be reviewed and I will be contacted via email.
+                                    I agree to the <a href="terms" target="_blank">Terms of Service</a> and <a href="privacy" target="_blank">Privacy Policy</a>. I understand that my application will be reviewed and I will be contacted via email.
                                 </span>
                             </label>
                         </div>
@@ -252,7 +252,7 @@ include '../includes/header.php';
                         <p style="color: var(--gray-600); margin-bottom: var(--spacing-lg); font-size: 0.9375rem;">
                             Email us at <a href="mailto:business@every27.com">business@every27.com</a>
                         </p>
-                        <a href="contact.php" class="btn btn-primary">
+                        <a href="contact" class="btn btn-primary">
                             Contact Us
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>

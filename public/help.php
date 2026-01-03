@@ -31,7 +31,7 @@ include '../includes/header.php';
         </div>
 
         <div class="grid grid-3 mb-5">
-            <a href="faq.php" class="feature-card reveal" style="text-decoration: none;">
+            <a href="faq" class="feature-card reveal" style="text-decoration: none;">
                 <div class="feature-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -55,7 +55,7 @@ include '../includes/header.php';
                     New to Every27? Learn how to set up and use the platform.
                 </p>
             </a>
-            <a href="contact.php" class="feature-card reveal" style="text-decoration: none;">
+            <a href="contact" class="feature-card reveal" style="text-decoration: none;">
                 <div class="feature-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -77,7 +77,7 @@ include '../includes/header.php';
                     <div class="card-body">
                         <h3 style="color: var(--primary-color); margin-bottom: var(--spacing-md);">For Companies</h3>
                         <ol style="color: var(--gray-600); padding-left: var(--spacing-lg);">
-                            <li style="margin-bottom: var(--spacing-sm);">Request access at <a href="request-access.php">Request Access</a></li>
+                            <li style="margin-bottom: var(--spacing-sm);">Request access at <a href="request-access">Request Access</a></li>
                             <li style="margin-bottom: var(--spacing-sm);">Submit your CAC certificate or business documents</li>
                             <li style="margin-bottom: var(--spacing-sm);">Wait for approval (1-3 business days)</li>
                             <li style="margin-bottom: var(--spacing-sm);">Log in and complete your company profile</li>

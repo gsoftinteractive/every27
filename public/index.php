@@ -30,14 +30,14 @@ include '../includes/header.php';
                     Every27 ensures your employees receive their salaries on the 27th of every month. No more late payments, no more excuses. Just reliable, automated payroll that works.
                 </p>
                 <div class="hero-actions">
-                    <a href="request-access.php" class="btn btn-primary btn-lg">
+                    <a href="request-access" class="btn btn-primary btn-lg">
                         Get Started Free
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </a>
-                    <a href="features.php" class="btn btn-outline btn-lg">Learn More</a>
+                    <a href="features" class="btn btn-outline btn-lg">Learn More</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -336,7 +336,7 @@ include '../includes/header.php';
             </div>
         </div>
         <div class="text-center mt-5">
-            <a href="features.php" class="btn btn-primary btn-lg">Explore All Features</a>
+            <a href="features" class="btn btn-primary btn-lg">Explore All Features</a>
         </div>
     </div>
 </section>
@@ -401,14 +401,14 @@ include '../includes/header.php';
                 Join hundreds of companies that trust Every27 for reliable, automated salary payments. Your employees deserve to be paid on time.
             </p>
             <div class="cta-actions">
-                <a href="request-access.php" class="btn btn-white btn-lg">
+                <a href="request-access" class="btn btn-white btn-lg">
                     Request Access
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
-                <a href="contact.php" class="btn btn-outline btn-lg" style="border-color: white; color: white;">Contact Sales</a>
+                <a href="contact" class="btn btn-outline btn-lg" style="border-color: white; color: white;">Contact Sales</a>
             </div>
         </div>
     </div>
@@ -471,7 +471,7 @@ include '../includes/header.php';
             </div>
         </div>
         <div class="text-center mt-5">
-            <a href="faq.php" class="btn btn-outline">View All FAQs</a>
+            <a href="faq" class="btn btn-outline">View All FAQs</a>
         </div>
     </div>
 </section>

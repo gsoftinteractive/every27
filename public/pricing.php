@@ -92,7 +92,7 @@ include '../includes/header.php';
                         <span>Customer support</span>
                     </div>
                 </div>
-                <a href="request-access.php" class="btn btn-primary btn-block">Get Started</a>
+                <a href="request-access" class="btn btn-primary btn-block">Get Started</a>
             </div>
 
             <!-- Employee Salary Advance -->
@@ -155,7 +155,7 @@ include '../includes/header.php';
                         <span>Withdraw to any Nigerian bank</span>
                     </div>
                 </div>
-                <a href="request-access.php" class="btn btn-primary btn-block">Get Started</a>
+                <a href="request-access" class="btn btn-primary btn-block">Get Started</a>
             </div>
         </div>
     </div>
@@ -333,14 +333,14 @@ include '../includes/header.php';
                 Join hundreds of companies using Every27 for reliable, affordable payroll management.
             </p>
             <div class="cta-actions">
-                <a href="request-access.php" class="btn btn-white btn-lg">
+                <a href="request-access" class="btn btn-white btn-lg">
                     Request Access
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
-                <a href="contact.php" class="btn btn-outline btn-lg" style="border-color: white; color: white;">Contact Sales</a>
+                <a href="contact" class="btn btn-outline btn-lg" style="border-color: white; color: white;">Contact Sales</a>
             </div>
         </div>
     </div>

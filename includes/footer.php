@@ -42,10 +42,10 @@
                 <div class="footer-links">
                     <h4>Company</h4>
                     <ul>
-                        <li><a href="about.php">About Us</a></li>
-                        <li><a href="features.php">Features</a></li>
-                        <li><a href="pricing.php">Pricing</a></li>
-                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="about">About Us</a></li>
+                        <li><a href="features">Features</a></li>
+                        <li><a href="pricing">Pricing</a></li>
+                        <li><a href="contact">Contact</a></li>
                     </ul>
                 </div>
 
@@ -53,10 +53,10 @@
                 <div class="footer-links">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="faq.php">FAQs</a></li>
-                        <li><a href="help.php">Help Center</a></li>
+                        <li><a href="faq">FAQs</a></li>
+                        <li><a href="help">Help Center</a></li>
                         <li><a href="docs/Every27_Handbook.html" target="_blank">Platform Handbook</a></li>
-                        <li><a href="request-access.php">Request Access</a></li>
+                        <li><a href="request-access">Request Access</a></li>
                     </ul>
                 </div>
 
@@ -64,10 +64,10 @@
                 <div class="footer-links">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="terms.php">Terms of Service</a></li>
-                        <li><a href="privacy.php">Privacy Policy</a></li>
-                        <li><a href="cookies.php">Cookie Policy</a></li>
-                        <li><a href="security.php">Security</a></li>
+                        <li><a href="terms">Terms of Service</a></li>
+                        <li><a href="privacy">Privacy Policy</a></li>
+                        <li><a href="cookies">Cookie Policy</a></li>
+                        <li><a href="security">Security</a></li>
                     </ul>
                 </div>
             </div>
@@ -76,9 +76,9 @@
             <div class="footer-bottom">
                 <p>&copy; <?php echo date('Y'); ?> Every27 Limited. All rights reserved.</p>
                 <div class="footer-bottom-links">
-                    <a href="terms.php">Terms</a>
-                    <a href="privacy.php">Privacy</a>
-                    <a href="contact.php">Support</a>
+                    <a href="terms">Terms</a>
+                    <a href="privacy">Privacy</a>
+                    <a href="contact">Support</a>
                 </div>
             </div>
         </div>

@@ -91,7 +91,7 @@ include '../includes/header.php';
                     </svg>
                 </button>
                 <div class="faq-answer">
-                    Visit our <a href="request-access.php">Request Access</a> page and submit your company details along with your CAC certificate or business registration document. Our team will review your application and get back to you within 1-3 business days.
+                    Visit our <a href="request-access">Request Access</a> page and submit your company details along with your CAC certificate or business registration document. Our team will review your application and get back to you within 1-3 business days.
                 </div>
             </div>
 
@@ -346,7 +346,7 @@ include '../includes/header.php';
                     </svg>
                 </button>
                 <div class="faq-answer">
-                    Email us at support@every27.com or visit our <a href="contact.php">Contact page</a>. We respond to all inquiries within 24 hours on business days.
+                    Email us at support@every27.com or visit our <a href="contact">Contact page</a>. We respond to all inquiries within 24 hours on business days.
                 </div>
             </div>
         </div>
@@ -362,14 +362,14 @@ include '../includes/header.php';
                 Our team is here to help. Reach out to us and we'll get back to you as soon as possible.
             </p>
             <div class="cta-actions">
-                <a href="contact.php" class="btn btn-white btn-lg">
+                <a href="contact" class="btn btn-white btn-lg">
                     Contact Us
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
-                <a href="request-access.php" class="btn btn-outline btn-lg" style="border-color: white; color: white;">Request Access</a>
+                <a href="request-access" class="btn btn-outline btn-lg" style="border-color: white; color: white;">Request Access</a>
             </div>
         </div>
     </div>

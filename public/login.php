@@ -123,7 +123,7 @@ $page_description = 'Login to your Every27 account. Secure access for companies 
                 <!-- Footer -->
                 <div class="login-footer">
                     <p style="color: var(--gray-500); margin-bottom: var(--spacing-sm);">Don't have an account?</p>
-                    <a href="request-access.php" class="btn btn-outline btn-block">Request Company Access</a>
+                    <a href="request-access" class="btn btn-outline btn-block">Request Company Access</a>
                 </div>
             </div>
 

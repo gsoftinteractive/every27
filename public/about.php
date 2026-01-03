@@ -211,14 +211,14 @@ include '../includes/header.php';
                 Contact us at <a href="mailto:hello@every27.com" style="color: white; text-decoration: underline;">hello@every27.com</a>
             </p>
             <div class="cta-actions">
-                <a href="request-access.php" class="btn btn-white btn-lg">
+                <a href="request-access" class="btn btn-white btn-lg">
                     Request Access
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
-                <a href="contact.php" class="btn btn-outline btn-lg" style="border-color: white; color: white;">Contact Us</a>
+                <a href="contact" class="btn btn-outline btn-lg" style="border-color: white; color: white;">Contact Us</a>
             </div>
         </div>
     </div>
