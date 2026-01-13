@@ -33,14 +33,20 @@ class WalletController extends BaseController
         }
 
         $transactionModel = new TransactionModel();
-        $recentTransactions = $transactionModel->getRecent($wallet['id'], 10);
-        $summary = $transactionModel->getWalletSummary($wallet['id'], date('Y-m-01'), date('Y-m-t'));
+        $transactions = $transactionModel->getRecent($wallet['id'], 10);
+
+        // Calculate stats
+        $stats = [
+            'total_funded' => $transactionModel->getTotalByType($wallet['id'], 'credit', 'funding'),
+            'total_disbursed' => $transactionModel->getTotalByType($wallet['id'], 'debit'),
+            'monthly_payroll' => $transactionModel->getMonthlyPayroll($wallet['id']),
+        ];
 
         return view('company/wallet/index', [
-            'pageTitle'          => 'Wallet',
-            'wallet'             => $wallet,
-            'recentTransactions' => $recentTransactions,
-            'summary'            => $summary,
+            'pageTitle'    => 'Wallet',
+            'wallet'       => $wallet,
+            'transactions' => $transactions,
+            'stats'        => $stats,
         ]);
     }
 

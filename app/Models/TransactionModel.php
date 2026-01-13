@@ -158,6 +158,43 @@ class TransactionModel extends Model
     }
 
     /**
+     * Get total amount by type and optional category
+     */
+    public function getTotalByType(int $walletId, string $type, ?string $category = null): float
+    {
+        $builder = $this->db->table($this->table);
+        $builder->where('wallet_id', $walletId);
+        $builder->where('type', $type);
+        $builder->where('status', 'completed');
+
+        if ($category) {
+            $builder->where('category', $category);
+        }
+
+        $result = $builder->selectSum('amount')->get()->getRow();
+        return (float) ($result->amount ?? 0);
+    }
+
+    /**
+     * Get monthly payroll total for current month
+     */
+    public function getMonthlyPayroll(int $walletId): float
+    {
+        $result = $this->db->table($this->table)
+            ->where('wallet_id', $walletId)
+            ->where('type', 'debit')
+            ->where('category', 'payroll')
+            ->where('status', 'completed')
+            ->where('created_at >=', date('Y-m-01 00:00:00'))
+            ->where('created_at <=', date('Y-m-t 23:59:59'))
+            ->selectSum('amount')
+            ->get()
+            ->getRow();
+
+        return (float) ($result->amount ?? 0);
+    }
+
+    /**
      * Get platform statistics
      */
     public function getPlatformStats(string $period = 'month'): array
