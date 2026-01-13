@@ -2,21 +2,32 @@
 
 namespace App\Services;
 
-use CodeIgniter\Email\Email;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 class EmailService
 {
-    protected Email $email;
     protected string $fromEmail = 'noreply@every27.com';
     protected string $fromName = 'Every27';
 
+    // SMTP Configuration
+    protected string $smtpHost = '';
+    protected string $smtpUser = '';
+    protected string $smtpPass = '';
+    protected int $smtpPort = 465;
+    protected string $smtpCrypto = 'ssl';
+
     public function __construct()
     {
-        $this->email = \Config\Services::email();
-
-        // Configure email settings
-        $this->email->setFrom($this->fromEmail, $this->fromName);
-        $this->email->setMailType('html');
+        // Load configuration from environment
+        $this->smtpHost = env('email.SMTPHost', '');
+        $this->smtpUser = env('email.SMTPUser', '');
+        $this->smtpPass = env('email.SMTPPass', '');
+        $this->smtpPort = (int) env('email.SMTPPort', 465);
+        $this->smtpCrypto = env('email.SMTPCrypto', 'ssl');
+        $this->fromEmail = env('email.fromEmail', $this->fromEmail);
+        $this->fromName = env('email.fromName', $this->fromName);
     }
 
     /**
@@ -263,18 +274,50 @@ class EmailService
     }
 
     /**
-     * Send email
+     * Send email using PHPMailer
      */
     public function send($to, string $subject, string $message): bool
     {
-        try {
-            $this->email->setTo($to);
-            $this->email->setSubject($subject);
-            $this->email->setMessage($message);
+        // Check if SMTP is configured
+        if (empty($this->smtpHost) || empty($this->smtpUser)) {
+            log_message('warning', 'Email not sent - SMTP not configured');
+            return false;
+        }
 
-            return $this->email->send();
-        } catch (\Exception $e) {
-            log_message('error', 'Email sending failed: ' . $e->getMessage());
+        $mail = new PHPMailer(true);
+
+        try {
+            // Server settings
+            $mail->isSMTP();
+            $mail->Host       = $this->smtpHost;
+            $mail->SMTPAuth   = true;
+            $mail->Username   = $this->smtpUser;
+            $mail->Password   = $this->smtpPass;
+            $mail->SMTPSecure = $this->smtpCrypto === 'ssl' ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port       = $this->smtpPort;
+
+            // Sender
+            $mail->setFrom($this->fromEmail, $this->fromName);
+
+            // Recipients
+            if (is_array($to)) {
+                foreach ($to as $recipient) {
+                    $mail->addAddress($recipient);
+                }
+            } else {
+                $mail->addAddress($to);
+            }
+
+            // Content
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body    = $message;
+            $mail->AltBody = strip_tags($message);
+
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            log_message('error', 'Email sending failed: ' . $mail->ErrorInfo);
             return false;
         }
     }
