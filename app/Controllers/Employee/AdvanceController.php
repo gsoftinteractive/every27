@@ -59,10 +59,14 @@ class AdvanceController extends BaseController
             return redirect()->to('/employee/advance')->with('error', $eligibility['reason']);
         }
 
+        // Calculate max advance (50% of salary)
+        $maxAdvance = (float) ($employee['monthly_salary'] ?? 0) * 0.5;
+
         return view('employee/advance/request', [
             'pageTitle'   => 'Request Salary Advance',
             'employee'    => $employee,
             'eligibility' => $eligibility,
+            'maxAdvance'  => $maxAdvance,
         ]);
     }
 
