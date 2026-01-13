@@ -82,14 +82,13 @@ if (!isset($userType)) {
         }
 
         .sidebar-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--gray-900);
+            display: block;
             text-decoration: none;
         }
 
-        .sidebar-logo span {
-            color: var(--primary);
+        .sidebar-logo img {
+            height: 32px;
+            width: auto;
         }
 
         .sidebar-nav {
@@ -468,7 +467,7 @@ if (!isset($userType)) {
     <aside class="sidebar">
         <div class="sidebar-header">
             <a href="<?= base_url() ?>" class="sidebar-logo">
-                Every<span>27</span>
+                <img src="<?= base_url('assets/images/every27.svg') ?>" alt="Every27">
             </a>
         </div>
 
