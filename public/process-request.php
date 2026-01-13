@@ -1,12 +1,21 @@
 <?php
 /**
  * Every27 - Process Access Request
- * Handles form submission, sends email notification
+ * Handles form submission, saves to database, sends email notification
  */
+
+// Bootstrap CodeIgniter to use models
+require_once __DIR__ . '/../app/Config/Paths.php';
+$paths = new Config\Paths();
+require_once $paths->systemDirectory . '/Boot.php';
+
+// Initialize CI4
+$app = \Config\Services::codeigniter();
+$app->initialize();
 
 // Only accept POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: request-access.php');
+    header('Location: request-access');
     exit;
 }
 
@@ -20,7 +29,7 @@ $phone = htmlspecialchars(trim($_POST['phone'] ?? ''));
 $employee_count = htmlspecialchars(trim($_POST['employee_count'] ?? ''));
 $industry = htmlspecialchars(trim($_POST['industry'] ?? 'Not specified'));
 $address = htmlspecialchars(trim($_POST['address'] ?? ''));
-$message = htmlspecialchars(trim($_POST['message'] ?? 'No additional information provided.'));
+$message = htmlspecialchars(trim($_POST['message'] ?? ''));
 
 // Validate required fields
 $errors = [];
@@ -35,88 +44,93 @@ if (empty($address)) $errors[] = 'Company address is required';
 
 // If there are errors, redirect back with error message
 if (!empty($errors)) {
-    $_SESSION['form_error'] = implode(', ', $errors);
-    header('Location: request-access.php?error=1');
+    header('Location: request-access?error=1');
     exit;
 }
 
-// Prepare email content for admin
-$admin_email = 'business@every27.com';
-$subject = "New Access Request: {$company_name}";
+// Save to database
+try {
+    $accessRequestModel = new \App\Models\AccessRequestModel();
 
-$email_body = "
-==============================================
-NEW COMPANY ACCESS REQUEST
-==============================================
+    $data = [
+        'company_name'   => $company_name,
+        'rc_number'      => $rc_number,
+        'contact_name'   => $contact_name,
+        'position'       => $position,
+        'email'          => $email,
+        'phone'          => $phone,
+        'employee_count' => $employee_count,
+        'industry'       => $industry,
+        'address'        => $address,
+        'message'        => $message,
+        'status'         => 'pending',
+        'ip_address'     => $_SERVER['REMOTE_ADDR'] ?? null,
+    ];
 
-COMPANY INFORMATION
--------------------
-Company Name: {$company_name}
-RC/CAC Number: {$rc_number}
-Industry: {$industry}
-Number of Employees: {$employee_count}
-Address: {$address}
+    $requestId = $accessRequestModel->insert($data);
 
-CONTACT PERSON
---------------
-Name: {$contact_name}
-Position: {$position}
-Email: {$email}
-Phone: {$phone}
+    if (!$requestId) {
+        throw new Exception('Failed to save request');
+    }
 
-ADDITIONAL INFORMATION
-----------------------
-{$message}
+    // Send email notification to admin
+    $emailService = new \App\Services\EmailService();
 
-==============================================
-Submitted: " . date('F j, Y \a\t g:i A') . "
-==============================================
+    // Try to send admin notification
+    try {
+        $adminEmail = 'business@every27.com';
+        $subject = "New Access Request: {$company_name}";
+        $body = "
+        <h2>New Company Access Request</h2>
+        <p>A new company has requested access to Every27.</p>
 
-Action Required:
-1. Review the company details
-2. Contact them for CAC certificate/documentation
-3. Process approval in admin dashboard
+        <h3>Company Information</h3>
+        <ul>
+            <li><strong>Company Name:</strong> {$company_name}</li>
+            <li><strong>RC/CAC Number:</strong> {$rc_number}</li>
+            <li><strong>Industry:</strong> {$industry}</li>
+            <li><strong>Number of Employees:</strong> {$employee_count}</li>
+            <li><strong>Address:</strong> {$address}</li>
+        </ul>
 
-";
+        <h3>Contact Person</h3>
+        <ul>
+            <li><strong>Name:</strong> {$contact_name}</li>
+            <li><strong>Position:</strong> {$position}</li>
+            <li><strong>Email:</strong> {$email}</li>
+            <li><strong>Phone:</strong> {$phone}</li>
+        </ul>
 
-// Email headers
-$headers = "From: Every27 <noreply@every27.com>\r\n";
-$headers .= "Reply-To: {$email}\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        <h3>Additional Information</h3>
+        <p>" . nl2br($message ?: 'None provided') . "</p>
 
-// Send email to admin
-$email_sent = @mail($admin_email, $subject, $email_body, $headers);
+        <hr>
+        <p><a href='" . base_url('admin/access-requests/' . $requestId) . "'>View in Admin Dashboard</a></p>
+        ";
 
-// Also try to send confirmation to the company
-$company_subject = "Every27 - We've Received Your Access Request";
-$company_body = "
-Dear {$contact_name},
+        $emailService->send($adminEmail, $subject, $body);
+    } catch (Exception $e) {
+        // Log but don't fail if email fails
+        log_message('error', 'Failed to send admin notification: ' . $e->getMessage());
+    }
 
-Thank you for your interest in Every27!
+    // Send confirmation to company
+    try {
+        $emailService->sendAccessRequestConfirmation([
+            'company_name'  => $company_name,
+            'contact_name'  => $contact_name,
+            'email'         => $email,
+        ]);
+    } catch (Exception $e) {
+        log_message('error', 'Failed to send confirmation email: ' . $e->getMessage());
+    }
 
-We have received your access request for {$company_name}. Our team will review your application and get back to you within 1-3 business days.
+    // Redirect to success page
+    header('Location: request-access?success=1');
+    exit;
 
-What happens next:
-1. Our team reviews your application
-2. We may contact you for additional documentation (CAC certificate)
-3. Once approved, you'll receive login credentials via email
-4. You can then set up your company profile and add employees
-
-If you have any questions in the meantime, please don't hesitate to contact us at business@every27.com.
-
-Best regards,
-The Every27 Team
-
---
-Every27 - Your Salary, On Time, Every Time
-https://every27.com
-";
-
-$company_headers = "From: Every27 <noreply@every27.com>\r\n";
-$company_headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-
-@mail($email, $company_subject, $company_body, $company_headers);
-
-// Redirect to success page
-header('Location: request-access.php?success=1');
-exit;
+} catch (Exception $e) {
+    log_message('error', 'Access request error: ' . $e->getMessage());
+    header('Location: request-access?error=1');
+    exit;
+}

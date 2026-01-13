@@ -35,7 +35,7 @@ $page_description = 'Login to your Every27 account. Secure access for companies 
                 <!-- Header -->
                 <div class="login-header">
                     <a href="/" class="logo">
-                        <span>Every</span><span class="highlight">27</span>
+                        <img src="assets/images/every27.svg" alt="Every27 Logo" style="height: 40px;">
                     </a>
                     <p style="color: var(--gray-500); margin-bottom: 0;">Welcome back! Please login to your account.</p>
                 </div>
@@ -47,7 +47,7 @@ $page_description = 'Login to your Every27 account. Secure access for companies 
                 </div>
 
                 <!-- Company Login Form -->
-                <form id="company-form" class="login-form" action="#" method="POST" data-validate>
+                <form id="company-form" class="login-form" action="company/login" method="POST" data-validate>
                     <div class="form-group">
                         <label for="company_email" class="form-label">Email Address</label>
                         <input type="email" id="company_email" name="email" class="form-input" placeholder="you@company.com" required>
@@ -84,7 +84,7 @@ $page_description = 'Login to your Every27 account. Secure access for companies 
                 </form>
 
                 <!-- Employee Login Form -->
-                <form id="employee-form" class="login-form" action="#" method="POST" data-validate style="display: none;">
+                <form id="employee-form" class="login-form" action="employee/login" method="POST" data-validate style="display: none;">
                     <div class="form-group">
                         <label for="employee_email" class="form-label">Email Address</label>
                         <input type="email" id="employee_email" name="email" class="form-input" placeholder="you@example.com" required>

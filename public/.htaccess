@@ -1,5 +1,5 @@
 # Every27 - Apache URL Rewriting
-# Removes .php extension from URLs
+# Combines static pages with CodeIgniter 4 backend
 
 RewriteEngine On
 
@@ -12,21 +12,19 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} (.+)/$
 RewriteRule ^ %1 [L,R=301]
 
-# Hide .php extension
-# If the request doesn't point to an existing directory or file
-RewriteCond %{REQUEST_FILENAME} !-d
+# ============================================
+# CodeIgniter 4 Routes
+# ============================================
+# Route all requests through CI4 (index.php)
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
 
-# Add .php to the URL internally
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^(.*)$ $1.php [L]
-
-# Redirect .php URLs to clean URLs (optional - prevents duplicate content)
-RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
-RewriteRule ^ /%1 [NC,L,R=301]
-
-# Security - Deny access to sensitive files
-<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql)$">
+# ============================================
+# Security
+# ============================================
+# Deny access to sensitive files
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|env)$">
     Order Allow,Deny
     Deny from all
 </FilesMatch>

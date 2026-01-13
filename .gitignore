@@ -13,12 +13,13 @@
 # OS files
 .DS_Store
 Thumbs.db
+nul
 
 # Logs
 *.log
 logs/
 
-# Dependencies (if added later)
+# Dependencies
 vendor/
 node_modules/
 
@@ -34,3 +35,23 @@ cache/
 *.pem
 *.key
 credentials.json
+
+# CodeIgniter 4 specific
+writable/cache/*
+writable/logs/*
+writable/session/*
+writable/uploads/*
+writable/debugbar/*
+!writable/cache/.gitkeep
+!writable/logs/.gitkeep
+!writable/session/.gitkeep
+!writable/uploads/.gitkeep
+!writable/debugbar/.gitkeep
+
+# Build files
+builds/
+phpunit.xml
+.phpunit.result.cache
+
+# Test coverage
+tests/coverage/
