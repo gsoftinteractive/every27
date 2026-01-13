@@ -80,7 +80,7 @@ class CompanyController extends BaseController
     {
         $rules = [
             'company_name'    => 'required|min_length[2]',
-            'email'           => 'required|valid_email|is_unique[companies.email]',
+            'email'           => 'required|valid_email|is_unique[e27_companies.email]',
             'phone'           => 'required|min_length[10]',
             'password'        => 'required|min_length[8]',
             'contact_person'  => 'required|min_length[2]',
@@ -96,8 +96,8 @@ class CompanyController extends BaseController
             'company_name'              => $this->request->getPost('company_name'),
             'email'                     => $this->request->getPost('email'),
             'phone'                     => $this->request->getPost('phone'),
-            'password'                  => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-            'contact_person'            => $this->request->getPost('contact_person'),
+            'password'                  => $this->request->getPost('password'), // Model will hash via callback
+            'contact_name'              => $this->request->getPost('contact_person'), // Map to correct field name
             'address'                   => $this->request->getPost('address'),
             'industry'                  => $this->request->getPost('industry'),
             'status'                    => 'active',
@@ -105,6 +105,8 @@ class CompanyController extends BaseController
             'monthly_fee_per_employee'  => $this->request->getPost('monthly_fee') ?? 500,
         ];
 
+        // Skip model validation - we already validated above
+        $this->companyModel->skipValidation(true);
         $companyId = $this->companyModel->insert($data);
 
         if ($companyId) {

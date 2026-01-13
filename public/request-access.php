@@ -84,7 +84,7 @@ include '../includes/header.php';
                         Fill out the form below and our team will review your application within 1-3 business days.
                     </p>
 
-                    <form action="process-request.php" method="POST" data-validate>
+                    <form action="/request-access" method="POST" data-validate>
                         <div class="form-group">
                             <label for="company_name" class="form-label">Company Name *</label>
                             <input type="text" id="company_name" name="company_name" class="form-input" placeholder="Enter your company name" required>

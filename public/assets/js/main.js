@@ -240,32 +240,14 @@ function showError(input, message) {
  */
 function handleFormSubmit(form) {
     const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
+    const originalText = submitBtn.innerHTML;
 
     // Show loading state
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting...';
+    submitBtn.innerHTML = 'Submitting...';
 
-    // Simulate API call (replace with actual submission)
-    setTimeout(() => {
-        // Show success message
-        const successMessage = document.createElement('div');
-        successMessage.className = 'alert alert-success';
-        successMessage.textContent = 'Thank you! Your submission has been received.';
-        form.insertBefore(successMessage, form.firstChild);
-
-        // Reset form
-        form.reset();
-
-        // Reset button
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-
-        // Remove success message after 5 seconds
-        setTimeout(() => {
-            successMessage.remove();
-        }, 5000);
-    }, 1500);
+    // Actually submit the form
+    form.submit();
 }
 
 /**

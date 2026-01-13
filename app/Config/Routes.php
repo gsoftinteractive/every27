@@ -12,6 +12,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'FrontendController::index');
 $routes->get('login', 'FrontendController::login');
 $routes->get('request-access', 'FrontendController::requestAccess');
+$routes->post('request-access', 'FrontendController::submitAccessRequest');
 $routes->get('about', 'FrontendController::about');
 $routes->get('services', 'FrontendController::services');
 $routes->get('pricing', 'FrontendController::pricing');
