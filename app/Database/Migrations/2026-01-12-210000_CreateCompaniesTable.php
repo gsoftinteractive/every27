@@ -26,7 +26,7 @@ class CreateCompaniesTable extends Migration
             ],
             'email' => [
                 'type'       => 'VARCHAR',
-                'constraint' => 255,
+                'constraint' => 191,
                 'unique'     => true,
             ],
             'password' => [
