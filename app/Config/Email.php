@@ -6,8 +6,8 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-    public string $fromEmail  = '';
-    public string $fromName   = '';
+    public string $fromEmail  = 'noreply@every27.com';
+    public string $fromName   = 'Every27';
     public string $recipients = '';
 
     /**
@@ -18,7 +18,7 @@ class Email extends BaseConfig
     /**
      * The mail sending protocol: mail, sendmail, smtp
      */
-    public string $protocol = 'mail';
+    public string $protocol = 'smtp';
 
     /**
      * The server path to Sendmail.
@@ -43,7 +43,7 @@ class Email extends BaseConfig
     /**
      * SMTP Port
      */
-    public int $SMTPPort = 25;
+    public int $SMTPPort = 465;
 
     /**
      * SMTP Timeout (in seconds)
@@ -62,7 +62,21 @@ class Email extends BaseConfig
      *             to the server. 'ssl' means implicit SSL. Connection on port
      *             465 should set this to ''.
      */
-    public string $SMTPCrypto = 'tls';
+    public string $SMTPCrypto = 'ssl';
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        // Load from environment variables if available
+        $this->SMTPHost = env('email.SMTPHost', $this->SMTPHost);
+        $this->SMTPUser = env('email.SMTPUser', $this->SMTPUser);
+        $this->SMTPPass = env('email.SMTPPass', $this->SMTPPass);
+        $this->SMTPPort = (int) env('email.SMTPPort', $this->SMTPPort);
+        $this->SMTPCrypto = env('email.SMTPCrypto', $this->SMTPCrypto);
+        $this->fromEmail = env('email.fromEmail', $this->fromEmail);
+        $this->fromName = env('email.fromName', $this->fromName);
+    }
 
     /**
      * Enable word-wrap
