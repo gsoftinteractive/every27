@@ -103,7 +103,7 @@
                 <div style="border-top: 1px solid var(--gray-200); padding-top: 16px; margin-top: 16px;">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
                         <span style="color: var(--gray-500);">Wallet ID</span>
-                        <span style="font-family: monospace; font-size: 0.875rem;"><?= esc($wallet['wallet_id']) ?></span>
+                        <span style="font-family: monospace; font-size: 0.875rem;">#<?= esc($wallet['id']) ?></span>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
                         <span style="color: var(--gray-500);">Status</span>
