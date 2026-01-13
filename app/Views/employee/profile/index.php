@@ -122,7 +122,7 @@
 
                     <div class="form-group">
                         <label for="account_number" class="form-label">Account Number *</label>
-                        <input type="text" id="account_number" name="account_number" class="form-input" value="<?= esc($employee['account_number']) ?>" maxlength="10" pattern="[0-9]{10}" required>
+                        <input type="text" id="account_number" name="account_number" class="form-input" value="<?= esc($employee['account_number'] ?? '') ?>" maxlength="10" pattern="[0-9]{10}" required>
                     </div>
 
                     <div class="form-group">

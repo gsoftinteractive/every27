@@ -25,12 +25,24 @@ class AdvanceController extends BaseController
         $advances = $this->advanceModel->getByEmployee($this->employeeId);
 
         $employeeModel = new EmployeeModel();
+        $employee = $employeeModel->find($this->employeeId);
         $eligibility = $employeeModel->canRequestAdvance($this->employeeId);
 
+        // Check for active advance
+        $activeAdvance = $this->advanceModel->where('employee_id', $this->employeeId)
+                                            ->whereIn('status', ['pending', 'approved', 'disbursed'])
+                                            ->first();
+
+        // Calculate max advance (50% of salary)
+        $maxAdvance = (float) ($employee['monthly_salary'] ?? 0) * 0.5;
+
         return view('employee/advance/index', [
-            'pageTitle'   => 'Salary Advance',
-            'advances'    => $advances,
-            'eligibility' => $eligibility,
+            'pageTitle'     => 'Salary Advance',
+            'advances'      => $advances,
+            'eligibility'   => $eligibility,
+            'maxAdvance'    => $maxAdvance,
+            'canRequest'    => $eligibility['can_request'] ?? false,
+            'activeAdvance' => $activeAdvance,
         ]);
     }
 
