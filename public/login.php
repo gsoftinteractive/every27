@@ -47,16 +47,16 @@ $page_description = 'Login to your Every27 account. Secure access for companies 
                 </div>
 
                 <!-- Company Login Form -->
-                <form id="company-form" class="login-form" action="/company/login" method="POST">
+                <form id="company-form" class="login-form" action="/company/login" method="POST" autocomplete="on">
                     <div class="form-group">
                         <label for="company_email" class="form-label">Email Address</label>
-                        <input type="email" id="company_email" name="email" class="form-input" placeholder="you@company.com" required>
+                        <input type="email" id="company_email" name="email" class="form-input" placeholder="you@company.com" required autocomplete="email">
                     </div>
 
                     <div class="form-group">
                         <label for="company_password" class="form-label">Password</label>
                         <div style="position: relative;">
-                            <input type="password" id="company_password" name="password" class="form-input" placeholder="Enter your password" required style="padding-right: 48px;">
+                            <input type="password" id="company_password" name="password" class="form-input" placeholder="Enter your password" required style="padding-right: 48px;" autocomplete="current-password">
                             <button type="button" class="password-toggle" onclick="togglePassword('company_password')" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--gray-400); cursor: pointer;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -84,16 +84,16 @@ $page_description = 'Login to your Every27 account. Secure access for companies 
                 </form>
 
                 <!-- Employee Login Form -->
-                <form id="employee-form" class="login-form" action="/employee/login" method="POST" style="display: none;">
+                <form id="employee-form" class="login-form" action="/employee/login" method="POST" style="display: none;" autocomplete="on">
                     <div class="form-group">
                         <label for="employee_email" class="form-label">Email Address</label>
-                        <input type="email" id="employee_email" name="email" class="form-input" placeholder="you@example.com" required>
+                        <input type="email" id="employee_email" name="email" class="form-input" placeholder="you@example.com" required autocomplete="email">
                     </div>
 
                     <div class="form-group">
                         <label for="employee_password" class="form-label">Password</label>
                         <div style="position: relative;">
-                            <input type="password" id="employee_password" name="password" class="form-input" placeholder="Enter your password" required style="padding-right: 48px;">
+                            <input type="password" id="employee_password" name="password" class="form-input" placeholder="Enter your password" required style="padding-right: 48px;" autocomplete="current-password">
                             <button type="button" class="password-toggle" onclick="togglePassword('employee_password')" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--gray-400); cursor: pointer;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>

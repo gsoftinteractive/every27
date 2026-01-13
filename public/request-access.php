@@ -84,36 +84,36 @@ include '../includes/header.php';
                         Fill out the form below and our team will review your application within 1-3 business days.
                     </p>
 
-                    <form action="/request-access" method="POST" data-validate>
+                    <form action="/request-access" method="POST" autocomplete="on">
                         <div class="form-group">
                             <label for="company_name" class="form-label">Company Name *</label>
-                            <input type="text" id="company_name" name="company_name" class="form-input" placeholder="Enter your company name" required>
+                            <input type="text" id="company_name" name="company_name" class="form-input" placeholder="Enter your company name" required autocomplete="organization">
                         </div>
 
                         <div class="form-group">
                             <label for="rc_number" class="form-label">RC/CAC Number *</label>
-                            <input type="text" id="rc_number" name="rc_number" class="form-input" placeholder="e.g., RC123456" required>
+                            <input type="text" id="rc_number" name="rc_number" class="form-input" placeholder="e.g., RC123456" required autocomplete="off">
                         </div>
 
                         <div class="grid grid-2">
                             <div class="form-group">
                                 <label for="contact_name" class="form-label">Contact Person Name *</label>
-                                <input type="text" id="contact_name" name="contact_name" class="form-input" placeholder="Full name" required>
+                                <input type="text" id="contact_name" name="contact_name" class="form-input" placeholder="Full name" required autocomplete="name">
                             </div>
                             <div class="form-group">
                                 <label for="position" class="form-label">Position/Title *</label>
-                                <input type="text" id="position" name="position" class="form-input" placeholder="e.g., HR Manager" required>
+                                <input type="text" id="position" name="position" class="form-input" placeholder="e.g., HR Manager" required autocomplete="organization-title">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="email" class="form-label">Business Email *</label>
-                            <input type="email" id="email" name="email" class="form-input" placeholder="you@company.com" required>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="you@company.com" required autocomplete="email">
                         </div>
 
                         <div class="form-group">
                             <label for="phone" class="form-label">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="e.g., 08012345678" required>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="e.g., 08012345678" required autocomplete="tel">
                         </div>
 
                         <div class="form-group">
@@ -148,7 +148,7 @@ include '../includes/header.php';
 
                         <div class="form-group">
                             <label for="address" class="form-label">Company Address *</label>
-                            <textarea id="address" name="address" class="form-textarea" placeholder="Enter your company address" rows="3" required></textarea>
+                            <textarea id="address" name="address" class="form-textarea" placeholder="Enter your company address" rows="3" required autocomplete="street-address"></textarea>
                         </div>
 
                         <div class="form-group">
