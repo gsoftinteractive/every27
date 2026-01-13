@@ -27,9 +27,39 @@ class PayrollController extends BaseController
     {
         $payrollRuns = $this->payrollModel->getByCompany($this->companyId);
 
+        // Get stats
+        $employeeModel = new EmployeeModel();
+        $activeEmployees = $employeeModel->where('company_id', $this->companyId)
+                                          ->where('status', 'active')
+                                          ->countAllResults();
+
+        $monthlyPayroll = array_sum(array_column(
+            $employeeModel->getActiveByCompany($this->companyId),
+            'monthly_salary'
+        ));
+
+        // Yearly total from completed payrolls
+        $yearlyTotal = $this->payrollModel->where('company_id', $this->companyId)
+                                          ->where('status', 'completed')
+                                          ->where('created_at >=', date('Y-01-01'))
+                                          ->selectSum('total_net_salary')
+                                          ->first();
+
+        $totalRuns = $this->payrollModel->where('company_id', $this->companyId)
+                                        ->where('status', 'completed')
+                                        ->countAllResults();
+
+        $stats = [
+            'active_employees' => $activeEmployees,
+            'monthly_payroll'  => $monthlyPayroll,
+            'yearly_total'     => (float) ($yearlyTotal['total_net_salary'] ?? 0),
+            'total_runs'       => $totalRuns,
+        ];
+
         return view('company/payroll/index', [
             'pageTitle'   => 'Payroll',
             'payrollRuns' => $payrollRuns,
+            'stats'       => $stats,
         ]);
     }
 
