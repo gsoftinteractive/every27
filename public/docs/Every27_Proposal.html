@@ -741,6 +741,27 @@
             }
         }
 
+        /* Page break for html2pdf */
+        .page {
+            page-break-after: always;
+            page-break-inside: avoid;
+            break-after: page;
+            break-inside: avoid;
+        }
+
+        .page:first-child {
+            page-break-before: avoid;
+        }
+
+        .html2pdf__page-break {
+            page-break-before: always;
+            break-before: page;
+            display: block;
+            height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
         /* PDF Download Button */
         .pdf-download-btn {
             position: fixed;
@@ -792,19 +813,26 @@
             const opt = {
                 margin: 0,
                 filename: 'Every27_Corporate_Proposal.pdf',
-                image: { type: 'jpeg', quality: 1 },
+                image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: {
                     scale: 2,
                     useCORS: true,
                     logging: false,
-                    letterRendering: true
+                    letterRendering: true,
+                    scrollY: 0,
+                    windowWidth: 794,
+                    windowHeight: 1123
                 },
                 jsPDF: {
                     unit: 'mm',
                     format: 'a4',
                     orientation: 'portrait'
                 },
-                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+                pagebreak: {
+                    mode: ['css', 'legacy'],
+                    before: '.page',
+                    avoid: ['h2', 'h3', 'h4', '.feature-card', '.problem-card', '.step', '.benefit-card', '.security-item']
+                }
             };
 
             html2pdf().set(opt).from(element).save().then(() => {
@@ -843,6 +871,8 @@
 
         <div class="cover-badge">Trusted Payroll Partner</div>
     </div>
+
+    <div class="html2pdf__page-break"></div>
 
     <!-- Page 2: The Problem -->
     <div class="page content-page">
@@ -891,6 +921,8 @@
             </div>
         </div>
     </div>
+
+    <div class="html2pdf__page-break"></div>
 
     <!-- Page 3: The Solution -->
     <div class="page content-page">
@@ -948,6 +980,8 @@
             </div>
         </div>
     </div>
+
+    <div class="html2pdf__page-break"></div>
 
     <!-- Page 4: How It Works -->
     <div class="page content-page">
@@ -1026,6 +1060,8 @@
         </div>
     </div>
 
+    <div class="html2pdf__page-break"></div>
+
     <!-- Page 5: Features & Security -->
     <div class="page content-page">
         <div class="page-header">
@@ -1102,6 +1138,8 @@
         </div>
     </div>
 
+    <div class="html2pdf__page-break"></div>
+
     <!-- Page 6: Pricing -->
     <div class="page content-page">
         <div class="page-header">
@@ -1161,6 +1199,8 @@
             </div>
         </div>
     </div>
+
+    <div class="html2pdf__page-break"></div>
 
     <!-- Page 7: Contact / CTA -->
     <div class="page cta-page">
