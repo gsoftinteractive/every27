@@ -220,16 +220,28 @@ h2:contains("Pricing"), h2:contains("₦") {
     }
 }
 
-/* First page special styling */
-body > h1:first-of-type {
+/* Logo and First page special styling */
+div[align="center"] {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+div[align="center"] img {
+    margin-bottom: 30px;
+    max-width: 300px;
+}
+
+div[align="center"] h1 {
     text-align: center;
     font-size: 42px;
     color: #0E84F1;
-    margin-top: 100px;
-    margin-bottom: 20px;
+    border-bottom: none;
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
 
-body > h1:first-of-type + p {
+div[align="center"] p {
     text-align: center;
     font-size: 20px;
     color: #FF6B35;

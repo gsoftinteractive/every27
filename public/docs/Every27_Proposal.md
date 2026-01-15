@@ -1,6 +1,10 @@
+<div align="center">
+<img src="../assets/images/every27.svg" alt="Every27 Logo" width="300">
+
 # Every27 - Corporate Payroll Solution
 
 **Your salary, on the 27th, every month - guaranteed.**
+</div>
 
 ---
 
